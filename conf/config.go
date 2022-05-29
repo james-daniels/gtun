@@ -1,7 +1,6 @@
 package conf
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -85,7 +84,5 @@ func SetPath(file string) string {
 		log.Fatalln(err)
 	}
 
-	path := path.Join(path.Dir(p), file)
-
-	return fmt.Sprint(path)
+	return path.Join(path.Dir(p), file)
 }
