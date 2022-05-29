@@ -12,7 +12,6 @@ import (
 )
 
 const (
-	executable = "gtun"
 	configFile = "config.ini"
 	winPort    = "3389"
 	linPort    = "22"
@@ -75,7 +74,8 @@ func Get() *config {
 }
 
 func SetPath(file string) string {
-	f, err := exec.LookPath(executable)
+
+	f, err := exec.LookPath(os.Args[0])
 	if err != nil {
 		log.Fatalln(err)
 	}
