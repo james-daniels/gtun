@@ -1,6 +1,6 @@
 package main
 
-import "gtun/cmd"
+import "tunnel/cmd"
 
 func main() {
 	cmd.Execute()

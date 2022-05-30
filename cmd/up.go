@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"gtun/exec"
-	"gtun/conf"
+	"tunnel/exec"
+	"tunnel/conf"
 
 	"github.com/spf13/cobra"
 )

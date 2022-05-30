@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 
-	"gtun/conf"
+	"tunnel/conf"
 )
 
 
