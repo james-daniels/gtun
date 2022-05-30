@@ -44,6 +44,9 @@ func DownTunnel(server string) {
 	cmd := exec.Command("kill", "-SIGKILL", string(pid))
 	err = cmd.Run()
 	errHandler(err)
+
+	err = os.Remove(file)
+	errHandler(err)
 }
 
 
