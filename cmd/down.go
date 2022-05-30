@@ -25,7 +25,7 @@ var downCmd = &cobra.Command{
 			exec.DownTunnel(c.LinServer)
 			exec.DownTunnel(c.WinServer)
 		default:
-			fmt.Println("an option must be specified to bring down a tunnel")
+			fmt.Println("Error: an option must be specified to bring down a tunnel")
 		}
 	},
 }
