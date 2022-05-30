@@ -37,6 +37,11 @@ func Get() *config {
 			log.Fatalf("file %v does not exist\n", file)
 		}
 	}
+	
+	cfg, err := ini.Load(file)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	var (
 		winServer    string
@@ -46,11 +51,6 @@ func Get() *config {
 		localWinPort string
 		zone         string
 	)
-
-	cfg, err := ini.Load(file)
-	if err != nil {
-		log.Fatalln(err)
-	}
 
 	linServer = cfg.Section("servers").Key("linserver").String()
 	winServer = cfg.Section("servers").Key("winserver").String()
