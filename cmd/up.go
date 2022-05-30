@@ -9,8 +9,8 @@ import (
 
 var upCmd = &cobra.Command{
 	Use:   "up",
-	Short: "A brief description of your command",
-	Long: "",
+	Short: "Establish a tunnel session",
+	Long: "Establish the linux or windows tunnels or all tunnels simultaneously",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		c := conf.Get()
