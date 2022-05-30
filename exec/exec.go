@@ -38,15 +38,12 @@ func TunnelDown(server string) {
 	
 	file := conf.GetPath(server + ".pid")
 
-	pid, err := os.ReadFile(file)
-	errHandler(err)
+	pid, _ := os.ReadFile(file)
 
 	cmd := exec.Command("kill", "-SIGKILL", string(pid))
-	err = cmd.Run()
-	errHandler(err)
+	cmd.Run()
 
-	err = os.Remove(file)
-	errHandler(err)
+	os.Remove(file)
 }
 
 
