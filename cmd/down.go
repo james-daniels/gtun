@@ -33,7 +33,7 @@ var downCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(downCmd)
 
-	downCmd.Flags().BoolVarP(&linux, "lin", "l", false, "bring down linux tunnel")
-	downCmd.Flags().BoolVarP(&windows, "win", "w", false, "bring down windows tunnel")
+	downCmd.Flags().BoolVarP(&linux, "linux", "l", false, "bring down linux tunnel")
+	downCmd.Flags().BoolVarP(&windows, "windows", "w", false, "bring down windows tunnel")
 	downCmd.Flags().BoolVarP(&all, "all", "a", false, "bring down all tunnels")
 }
