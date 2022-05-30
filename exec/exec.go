@@ -11,7 +11,7 @@ import (
 	"tunnel/conf"
 )
 
-func TunnelUp(comm, server, port, lport, zone string) {
+func TunnelUp(command, server, port, lport, zone string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
@@ -26,7 +26,7 @@ func TunnelUp(comm, server, port, lport, zone string) {
 		"--local-host-port=localhost:" + lport,
 		"--zone=" + zone,
 	}
-	cmd := exec.Command(comm, args...)
+	cmd := exec.Command(command, args...)
 	err := cmd.Start()
 	errHandler(err)
 
