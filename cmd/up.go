@@ -17,12 +17,12 @@ var upCmd = &cobra.Command{
 
 		switch {
 		case linux:
-			exec.UpTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone, "linux")
+			exec.TunnelUp(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone, "linux")
 		case windows:
-			exec.UpTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone,"windows")
+			exec.TunnelUp(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone,"windows")
 		default:
-			exec.UpTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone, "linux")
-			exec.UpTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone,"windows")
+			exec.TunnelUp(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone, "linux")
+			exec.TunnelUp(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone,"windows")
 		}
 	},
 }
