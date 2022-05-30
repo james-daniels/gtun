@@ -7,9 +7,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "gtun",
-	Short: "A brief description of your application",
-	Long: "",
+	Use:   "tunnel",
+	Short: "An app to setup tunnels using gcloud cli",
+	Long: "A simple app that uses the gcloud cli to establish iap tunnels.",
 }
 
 func Execute() {
