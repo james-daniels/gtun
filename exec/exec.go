@@ -37,7 +37,7 @@ func TunnelUp(comm, server, port, lport, zone string) {
 }
 
 func TunnelDown(server, lport string) {
-	
+
 	file := conf.GetPath(server + ".pid")
 
 	pid, _ := os.ReadFile(file)
@@ -51,7 +51,7 @@ func TunnelDown(server, lport string) {
 }
 
 func pidFile(server, pid string) {
-	
+
 	file := conf.GetPath(server + ".pid")
 
 	f, err := os.OpenFile(file, os.O_CREATE|os.O_WRONLY, 0644)

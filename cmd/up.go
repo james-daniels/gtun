@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"tunnel/exec"
 	"tunnel/conf"
+	"tunnel/exec"
 
 	"github.com/spf13/cobra"
 )
@@ -10,7 +10,7 @@ import (
 var upCmd = &cobra.Command{
 	Use:   "up",
 	Short: "Establish a tunnel session",
-	Long: "Establish the linux or windows tunnels or all tunnels simultaneously",
+	Long:  "Establish the linux or windows tunnels or all tunnels simultaneously",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		c := conf.Get()

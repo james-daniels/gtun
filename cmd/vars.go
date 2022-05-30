@@ -1,7 +1,7 @@
 package cmd
 
 var (
-	linux bool
+	linux   bool
 	windows bool
-	all bool
+	all     bool
 )

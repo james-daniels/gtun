@@ -9,7 +9,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "tunnel",
 	Short: "An app to setup tunnels using gcloud cli",
-	Long: "A simple app that uses the gcloud cli to establish iap tunnels.",
+	Long:  "A simple app that uses the gcloud cli to establish iap tunnels.",
 }
 
 func Execute() {
@@ -22,5 +22,3 @@ func Execute() {
 func init() {
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 }
-
-

@@ -37,7 +37,7 @@ func Get() *config {
 			log.Fatalf("file %v does not exist\n", file)
 		}
 	}
-	
+
 	cfg, err := ini.Load(file)
 	if err != nil {
 		log.Fatalln(err)

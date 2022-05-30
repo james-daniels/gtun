@@ -11,7 +11,7 @@ import (
 var downCmd = &cobra.Command{
 	Use:   "down",
 	Short: "Terminate the tunnel sessions",
-	Long: "Terminate the linux or windows tunnels or all tunnels simultaneously",
+	Long:  "Terminate the linux or windows tunnels or all tunnels simultaneously",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		c := conf.Get()
