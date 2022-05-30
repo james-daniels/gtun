@@ -36,7 +36,7 @@ func UpTunnel(comm, server, port, lport, zone, env string) {
 
 func DownTunnel(server string) {
 	
-	file := conf.SetPath(server + ".pid")
+	file := conf.GetPath(server + ".pid")
 
 	pid, err := os.ReadFile(file)
 	errHandler(err)
@@ -52,7 +52,7 @@ func DownTunnel(server string) {
 
 func pidFile(server, pid string) {
 	
-	file := conf.SetPath(server + ".pid")
+	file := conf.GetPath(server + ".pid")
 
 	f, err := os.OpenFile(file, os.O_CREATE|os.O_WRONLY, 0644)
 	errHandler(err)

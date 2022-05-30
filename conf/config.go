@@ -29,7 +29,7 @@ type config struct {
 
 func Get() *config {
 
-	file := SetPath(configFile)
+	file := GetPath(configFile)
 
 	_, err := os.Stat(file)
 	if err != nil {
@@ -71,7 +71,7 @@ func Get() *config {
 	}
 }
 
-func SetPath(file string) string {
+func GetPath(file string) string {
 
 	f, err := exec.LookPath(os.Args[0])
 	if err != nil {
