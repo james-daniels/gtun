@@ -42,7 +42,7 @@ func StopTunnel(server string) {
 	errHandler(err)
 
 	cmd := exec.Command("kill", "-SIGKILL", string(pid))
-	err = cmd.Start()
+	err = cmd.Run()
 	errHandler(err)
 }
 
