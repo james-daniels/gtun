@@ -11,7 +11,7 @@ import (
 )
 
 
-func StartTunnel(comm, server, port, lport, zone, env string) {
+func UpTunnel(comm, server, port, lport, zone, env string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
@@ -34,7 +34,7 @@ func StartTunnel(comm, server, port, lport, zone, env string) {
 	pidFile(server, pid)
 }
 
-func StopTunnel(server string) {
+func DownTunnel(server string) {
 	
 	file := conf.SetPath(server + ".pid")
 

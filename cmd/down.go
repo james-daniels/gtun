@@ -18,12 +18,12 @@ var downCmd = &cobra.Command{
 
 		switch {
 		case linux:
-			exec.StopTunnel(c.LinServer)
+			exec.DownTunnel(c.LinServer)
 		case windows:
-			exec.StopTunnel(c.WinServer)
+			exec.DownTunnel(c.WinServer)
 		case all:
-			exec.StopTunnel(c.LinServer)
-			exec.StopTunnel(c.WinServer)
+			exec.DownTunnel(c.LinServer)
+			exec.DownTunnel(c.WinServer)
 		default:
 			fmt.Println("an option must be specified to bring down a tunnel")
 		}
