@@ -19,7 +19,7 @@ const (
 type config struct {
 	WinServer    string
 	LinServer    string
-	Gpath        string
+	Command      string
 	LinPort      string
 	WinPort      string
 	LocalLinPort string
@@ -41,7 +41,7 @@ func Get() *config {
 	var (
 		winServer    string
 		linServer    string
-		gpath        string
+		command      string
 		localLinPort string
 		localWinPort string
 		zone         string
@@ -56,20 +56,19 @@ func Get() *config {
 	winServer = cfg.Section("servers").Key("winserver").String()
 	localLinPort = cfg.Section("local").Key("linport").String()
 	localWinPort = cfg.Section("local").Key("winport").String()
-	gpath = cfg.Section("gcloud").Key("path").String()
+	command = cfg.Section("gcloud").Key("command").String()
 	zone = cfg.Section("gcloud").Key("zone").String()
 
 	return &config{
 		WinServer:    winServer,
 		LinServer:    linServer,
-		Gpath:        gpath,
+		Command:      command,
 		LinPort:      linPort,
 		WinPort:      winPort,
 		LocalLinPort: localLinPort,
 		LocalWinPort: localWinPort,
 		Zone:         zone,
 	}
-
 }
 
 func SetPath(file string) string {

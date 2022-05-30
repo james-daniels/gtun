@@ -16,19 +16,18 @@ func Execute(env string) {
 
 	switch {
 	case env == "lin":
-		startTunnel(c.Gpath, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
+		startTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
 	case env == "win":
-		startTunnel(c.Gpath, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
-	case env == "all":
-		startTunnel(c.Gpath, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
-		startTunnel(c.Gpath, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
+		startTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
+	case env == "both":
+		startTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
+		startTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
 	default:
-		fmt.Println(`enter an environment of "lin", "win", "all" `)
+		fmt.Println(`enter server of "lin", "win", "both" `)
 	}
-
 }
 
-func startTunnel(path, server, port, lport, zone string) {
+func startTunnel(comm, server, port, lport, zone string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
@@ -43,7 +42,7 @@ func startTunnel(path, server, port, lport, zone string) {
 		"--local-host-port=localhost:" + lport,
 		"--zone=" + zone,
 	}
-	cmd := exec.Command(path, args...)
+	cmd := exec.Command(comm, args...)
 	err := cmd.Start()
 	errHandler(err)
 
@@ -52,6 +51,7 @@ func startTunnel(path, server, port, lport, zone string) {
 }
 
 func pidFile(server, pid string) {
+	
 	file := conf.SetPath(server + ".pid")
 
 	f, err := os.OpenFile(file, os.O_CREATE|os.O_WRONLY, 0644)
