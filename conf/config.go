@@ -34,7 +34,7 @@ func Get() *config {
 	_, err := os.Stat(file)
 	if err != nil {
 		if os.IsNotExist(err) {
-			log.Fatalln(file)
+			log.Fatalf("file %v does not exist\n", file)
 		}
 	}
 
