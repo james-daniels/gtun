@@ -11,11 +11,11 @@ import (
 	"tunnel/conf"
 )
 
-func TunnelUp(comm, server, port, lport, zone, env string) {
+func TunnelUp(comm, server, port, lport, zone string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
-		log.Fatalln(env + " tunnel at local port " + lport + " is aleady in use.")
+		log.Fatalln("tunnel at local port " + lport + " is aleady in use.")
 	}
 
 	args := []string{
