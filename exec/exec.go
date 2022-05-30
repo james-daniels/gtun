@@ -66,7 +66,7 @@ func pidFile(server, pid string) {
 func validate(port string) {
 
 	for i := 0; i < 3; i++ {
-		
+
 		time.Sleep(time.Second)
 
 		conn, _ := net.Dial("tcp", ":"+port)
