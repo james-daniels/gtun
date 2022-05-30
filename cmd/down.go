@@ -18,14 +18,14 @@ var downCmd = &cobra.Command{
 
 		switch {
 		case linux:
-			exec.TunnelDown(c.LinServer)
+			exec.TunnelDown(c.LinServer, c.LocalLinPort)
 		case windows:
-			exec.TunnelDown(c.WinServer)
+			exec.TunnelDown(c.WinServer, c.LocalWinPort)
 		case all:
-			exec.TunnelDown(c.LinServer)
-			exec.TunnelDown(c.WinServer)
+			exec.TunnelDown(c.LinServer, c.LocalLinPort)
+			exec.TunnelDown(c.WinServer, c.LocalWinPort)
 		default:
-			fmt.Println("Error: an option must be specified to bring down a tunnel")
+			fmt.Println("Error: a parameter must be specified to bring down a tunnel")
 		}
 	},
 }

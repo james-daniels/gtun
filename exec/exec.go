@@ -6,10 +6,10 @@ import (
 	"net"
 	"os"
 	"os/exec"
+	"time"
 
 	"tunnel/conf"
 )
-
 
 func TunnelUp(comm, server, port, lport, zone, env string) {
 
@@ -32,9 +32,11 @@ func TunnelUp(comm, server, port, lport, zone, env string) {
 
 	pid := fmt.Sprint(cmd.Process.Pid)
 	pidFile(server, pid)
+
+	validate(lport)
 }
 
-func TunnelDown(server string) {
+func TunnelDown(server, lport string) {
 	
 	file := conf.GetPath(server + ".pid")
 
@@ -44,8 +46,9 @@ func TunnelDown(server string) {
 	cmd.Run()
 
 	os.Remove(file)
-}
 
+	validate(lport)
+}
 
 func pidFile(server, pid string) {
 	
@@ -58,6 +61,21 @@ func pidFile(server, pid string) {
 
 	_, err = f.Write([]byte(pid))
 	errHandler(err)
+}
+
+func validate(port string) {
+
+	for i := 0; i < 3; i++ {
+		
+		time.Sleep(time.Second)
+
+		conn, _ := net.Dial("tcp", ":"+port)
+		if conn != nil {
+			fmt.Printf("tunnel up at local port %v\n", port)
+			return
+		}
+	}
+	fmt.Printf("tunnel down at local port %v\n", port)
 }
 
 func errHandler(err error) {
