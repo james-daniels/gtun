@@ -10,28 +10,12 @@ import (
 	"gtun/conf"
 )
 
-func Execute(env string) {
 
-	c := conf.Get()
-
-	switch {
-	case env == "lin":
-		startTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
-	case env == "win":
-		startTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
-	case env == "both":
-		startTunnel(c.Command, c.LinServer, c.LinPort, c.LocalLinPort, c.Zone)
-		startTunnel(c.Command, c.WinServer, c.WinPort, c.LocalWinPort, c.Zone)
-	default:
-		fmt.Println(`enter server of "lin", "win", "both" `)
-	}
-}
-
-func startTunnel(comm, server, port, lport, zone string) {
+func StartTunnel(comm, server, port, lport, zone, env string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
-		log.Fatalln("Port: " + lport + " is aleady in use.")
+		log.Fatalln(env + " tunnel at local port " + lport + " is aleady in use.")
 	}
 
 	args := []string{
@@ -49,6 +33,19 @@ func startTunnel(comm, server, port, lport, zone string) {
 	pid := fmt.Sprint(cmd.Process.Pid)
 	pidFile(server, pid)
 }
+
+func StopTunnel(server string) {
+	
+	file := conf.SetPath(server + ".pid")
+
+	pid, err := os.ReadFile(file)
+	errHandler(err)
+
+	cmd := exec.Command("kill", "-SIGKILL", string(pid))
+	err = cmd.Start()
+	errHandler(err)
+}
+
 
 func pidFile(server, pid string) {
 	

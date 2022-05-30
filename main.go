@@ -1,10 +1,7 @@
 package main
 
-import (
-	"gtun/exec"
-)
+import "gtun/cmd"
 
 func main() {
-
-	exec.Execute("all")
+	cmd.Execute()
 }
