@@ -15,7 +15,7 @@ func TunnelUp(command, server, port, lport, zone string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
-		log.Fatalln("tunnel at local port " + lport + " is aleady in use.")
+		log.Fatalln("local port " + lport + " is aleady in use.")
 	}
 
 	args := []string{
@@ -42,8 +42,7 @@ func TunnelDown(server, lport string) {
 
 	pid, _ := os.ReadFile(file)
 
-	cmd := exec.Command("kill", "-SIGKILL", string(pid))
-	cmd.Run()
+	exec.Command("kill", "-SIGKILL", string(pid)).Run()
 
 	os.Remove(file)
 
@@ -65,7 +64,7 @@ func pidFile(server, pid string) {
 
 func validate(port string) {
 
-	for i := 0; i < 3; i++ {
+	for i := 0; i < 5; i++ {
 
 		time.Sleep(time.Second)
 
