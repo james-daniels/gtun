@@ -77,9 +77,22 @@ Flags:
   -w, --windows   bring down windows tunnel
 ```
 
-## Config File
+### Installation
 
-The program reads a config file which is located in the same folder location as the executable.
+Determine best place to store the app on your filesystem. The example assumes your home directory.
+
+```text
+
+mkdir -p app/tunnel
+cp tunnel app/tunnel
+
+# Make sure the app is in your $PATH
+sudo ln -s app/tunnel/tunnel /usr/local/bin/tunnel
+```
+
+## Configuration
+
+The program reads a config file (config.ini) which needs to be placed same folder location as the executable.
 
 Pay attention to the "command" parameter.  It is assumed that your gcloud command will be located in different location than mine.  Please edit accordingly.
 
