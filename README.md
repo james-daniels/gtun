@@ -82,7 +82,6 @@ Flags:
 Determine best place to store the app on your filesystem. The example assumes your home directory.
 
 ```text
-
 mkdir -p app/tunnel
 cp tunnel app/tunnel
 
