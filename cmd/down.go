@@ -25,7 +25,7 @@ var downCmd = &cobra.Command{
 			exec.TunnelDown(c.LinServer, c.LocalLinPort)
 			exec.TunnelDown(c.WinServer, c.LocalWinPort)
 		default:
-			fmt.Println("Error: a parameter must be specified to bring down a tunnel")
+			fmt.Println("Error: a flag must be specified to bring down a tunnel")
 		}
 	},
 }
