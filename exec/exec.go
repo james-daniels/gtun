@@ -15,7 +15,8 @@ func TunnelUp(command, server, port, lport, zone string) {
 
 	conn, _ := net.Dial("tcp", ":"+lport)
 	if conn != nil {
-		log.Fatalln("local port " + lport + " is aleady in use.")
+		fmt.Println("local port " + lport + " is aleady in use.")
+		return
 	}
 
 	args := []string{
