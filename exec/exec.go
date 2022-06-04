@@ -65,7 +65,7 @@ func pidFile(server, pid string) {
 
 func validate(port string) {
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 
 		time.Sleep(time.Second)
 
