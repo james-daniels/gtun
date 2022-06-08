@@ -47,7 +47,7 @@ func TunnelDown(server, lport string) {
 
 	os.Remove(file)
 
-	validate(lport)
+	validateDown(lport)
 }
 
 func pidFile(server, pid string) {
@@ -76,6 +76,21 @@ func validate(port string) {
 		}
 	}
 	fmt.Printf("tunnel down at local port %v\n", port)
+}
+
+func validateDown(port string) {
+
+	for i := 0; i < 5; i++ {
+
+		time.Sleep(time.Second)
+
+		conn, _ := net.Dial("tcp", ":"+port)
+		if conn == nil {
+			fmt.Printf("tunnel down at local port %v\n", port)
+			return
+		}
+	}
+	fmt.Printf("tunnel up at local port %v\n", port)
 }
 
 func errHandler(err error) {
